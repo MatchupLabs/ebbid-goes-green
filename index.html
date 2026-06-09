@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   EBBID — "The EBBID Goes Green" Summit Recap
+   BRAND COLORS — change these to recolor the whole page
+   ============================================================ */
+:root{
+  --ebbid-green:#1c7a3e;       /* PRIMARY EBBID brand green */
+  --ebbid-green-deep:#0d4326;  /* deep forest */
+  --ebbid-green-dark:#072d19;  /* darkest band */
+  --solar:#c6ef3c;             /* solar lime / chartreuse accent */
+  --solar-deep:#94c30a;
+  --sky:#2f9fd8;               /* sky / wind blue secondary */
+  --ink:#0e1c13;               /* near-black ink */
+  --muted:#5d6e62;             /* muted text */
+  --paper:#ffffff;
+  --mist:#f1f7ee;              /* green-tinted off-white */
+  --line:rgba(14,28,19,.10);
+  --ease:cubic-bezier(.4,0,.2,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+@keyframes ebbid-spin{to{transform:rotate(360deg)}}
+@keyframes ebbid-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+@keyframes ebbid-pulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:.8;transform:scale(1.07)}}
+@keyframes ebbid-drift{0%{transform:translate(0,0) rotate(0deg)}100%{transform:translate(34px,46px) rotate(48deg)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</helmet>
+
+<div style="font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--paper);overflow-x:hidden">
+
+  <!-- ============ STICKY HEADER / NAV ============ -->
+  <header style="{{ headerStyle }}">
+    <div style="max-width:1180px;margin:0 auto;padding:0 28px;height:70px;display:flex;align-items:center;justify-content:space-between;gap:20px">
+      <a href="#top" aria-label="East Brooklyn Business Improvement District — home" style="display:flex;align-items:center;flex-shrink:0">
+        <img src="ebbid-logo.svg" alt="East Brooklyn Business Improvement District logo" style="height:34px;width:auto;display:block">
+      </a>
+      <nav aria-label="Primary" style="display:flex;align-items:center;gap:30px">
+        <a href="#recap" style="font-size:14px;font-weight:600;color:var(--ink);text-decoration:none;letter-spacing:.01em;transition:color .15s var(--ease)" style-hover="color:var(--ebbid-green)">Recap</a>
+        <a href="#gallery" style="font-size:14px;font-weight:600;color:var(--ink);text-decoration:none;letter-spacing:.01em;transition:color .15s var(--ease)" style-hover="color:var(--ebbid-green)">Gallery</a>
+        <a href="#highlights" style="font-size:14px;font-weight:600;color:var(--ink);text-decoration:none;letter-spacing:.01em;transition:color .15s var(--ease)" style-hover="color:var(--ebbid-green)">Highlights</a>
+        <a href="#sponsors" style="font-size:14px;font-weight:600;color:var(--ink);text-decoration:none;letter-spacing:.01em;transition:color .15s var(--ease)" style-hover="color:var(--ebbid-green)">Sponsors</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section id="top" style="position:relative;overflow:hidden;background:linear-gradient(180deg,#ffffff 0%,#eef6e8 55%,#e3f1da 100%)">
+    <!-- soft solar glow -->
+    <div aria-hidden="true" style="position:absolute;top:-160px;right:-120px;width:540px;height:540px;border-radius:50%;background:radial-gradient(circle,rgba(198,239,60,.55) 0%,rgba(198,239,60,0) 70%);filter:blur(8px);animation:ebbid-pulse 9s var(--ease) infinite;pointer-events:none"></div>
+    <div aria-hidden="true" style="position:absolute;bottom:80px;left:-140px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(47,159,216,.30) 0%,rgba(47,159,216,0) 70%);filter:blur(8px);pointer-events:none"></div>
+    <!-- floating leaves -->
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="var(--ebbid-green)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;top:120px;left:8%;width:34px;height:34px;opacity:.45;animation:ebbid-drift 11s var(--ease) infinite alternate;pointer-events:none"><path d="M11 20A7 7 0 0 1 4 13C4 7 9 3 20 3c0 8-4 14-9 14"/><path d="M4 20s2-6 8-10"/></svg>
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="var(--solar-deep)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;top:300px;left:44%;width:26px;height:26px;opacity:.5;animation:ebbid-drift 14s var(--ease) infinite alternate-reverse;pointer-events:none"><path d="M11 20A7 7 0 0 1 4 13C4 7 9 3 20 3c0 8-4 14-9 14"/><path d="M4 20s2-6 8-10"/></svg>
+
+    <div style="position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:64px 28px 0;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:40px;align-items:center">
+      <!-- copy -->
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:9px;padding:8px 15px;border-radius:999px;background:rgba(28,122,62,.10);border:1px solid rgba(28,122,62,.22);margin-bottom:24px">
+          <span style="width:7px;height:7px;border-radius:50%;background:var(--ebbid-green);box-shadow:0 0 0 4px rgba(28,122,62,.18)"></span>
+          <span style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ebbid-green-deep)">4th Annual Economic Development Summit</span>
+        </div>
+        <h1 style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(46px,7vw,82px);line-height:.98;letter-spacing:-.03em;margin:0;color:var(--ink)">The EBBID<br>Goes <span style="position:relative;white-space:nowrap;color:var(--ebbid-green)">Green<span style="position:absolute;left:0;right:0;bottom:.06em;height:.16em;background:linear-gradient(90deg,var(--solar),var(--solar-deep));border-radius:6px;z-index:-1"></span></span></h1>
+        <p style="margin:22px 0 0;font-size:15px;font-weight:600;color:var(--ebbid-green-deep);letter-spacing:.01em">Thursday, May 7, 2026 &nbsp;·&nbsp; Hosted by SoFive &nbsp;·&nbsp; 2015 Pitkin Avenue, Brooklyn, NY 11207</p>
+        <p style="margin:18px 0 0;max-width:540px;font-size:17px;line-height:1.62;color:var(--muted)">East Brooklyn's business community came together for a morning dedicated to renewable energy, the green economy, and building a pathway to green jobs across the 40-block East New York district.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:30px">
+          <a href="#recap" style="display:inline-flex;align-items:center;gap:9px;padding:15px 24px;border-radius:999px;background:var(--ebbid-green);color:#fff;font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 12px 30px rgba(28,122,62,.28);transition:transform .15s var(--ease),box-shadow .15s var(--ease)" style-hover="transform:translateY(-2px);box-shadow:0 18px 40px rgba(28,122,62,.36)">Read the recap
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="#highlights" style="display:inline-flex;align-items:center;gap:9px;padding:15px 24px;border-radius:999px;background:transparent;color:var(--ink);font-weight:600;font-size:15px;text-decoration:none;border:1.5px solid rgba(14,28,19,.22);transition:border-color .15s var(--ease),background .15s var(--ease)" style-hover="border-color:var(--ebbid-green);background:rgba(28,122,62,.06)">Watch highlights</a>
+        </div>
+      </div>
+      <!-- globe emblem -->
+      <div style="position:relative;display:flex;justify-content:center;align-items:center;min-height:380px">
+        <!-- rotating sun rays -->
+        <svg aria-hidden="true" viewBox="0 0 200 200" style="position:absolute;width:118%;height:118%;animation:ebbid-spin 90s linear infinite;opacity:.5;pointer-events:none">
+          <g fill="var(--solar)">
+            <path d="M100 0 L106 40 L94 40 Z"/><path d="M100 200 L106 160 L94 160 Z"/>
+            <path d="M0 100 L40 94 L40 106 Z"/><path d="M200 100 L160 94 L160 106 Z"/>
+            <path d="M29 29 L60 52 L52 60 Z"/><path d="M171 171 L140 148 L148 140 Z"/>
+            <path d="M171 29 L148 60 L140 52 Z"/><path d="M29 171 L52 148 L60 140 Z"/>
+          </g>
+          <g fill="var(--ebbid-green)" opacity=".55">
+            <path d="M50 6 L60 40 L48 42 Z"/><path d="M150 194 L140 160 L152 158 Z"/>
+            <path d="M6 150 L40 140 L42 152 Z"/><path d="M194 50 L160 60 L158 48 Z"/>
+          </g>
+        </svg>
+        <div aria-hidden="true" style="position:absolute;bottom:24px;width:62%;height:34px;border-radius:50%;background:radial-gradient(ellipse,rgba(13,67,38,.30) 0%,rgba(13,67,38,0) 70%);filter:blur(4px)"></div>
+        <img src="earth-day-globe.png" alt="East Brooklyn Earth Day emblem — a green planet with a Brooklyn skyline, trees, and waterways" style="position:relative;z-index:2;width:min(440px,86%);height:auto;animation:ebbid-float 7s var(--ease) infinite;filter:drop-shadow(0 24px 40px rgba(13,67,38,.22))">
+      </div>
+    </div>
+
+    <!-- skyline silhouette -->
+    <svg aria-hidden="true" viewBox="0 0 1440 200" preserveAspectRatio="none" style="display:block;width:100%;height:140px;margin-top:30px">
+      <g fill="var(--ebbid-green-deep)" opacity=".92">
+        <rect x="0" y="120" width="1440" height="80"/>
+        <rect x="60" y="78" width="44" height="42"/><rect x="120" y="60" width="34" height="60"/>
+        <rect x="180" y="92" width="58" height="28"/><rect x="260" y="50" width="40" height="70"/>
+        <rect x="316" y="84" width="30" height="36"/><rect x="380" y="66" width="52" height="54"/>
+        <rect x="700" y="40" width="46" height="80"/><rect x="760" y="74" width="34" height="46"/>
+        <rect x="980" y="58" width="56" height="62"/><rect x="1052" y="86" width="30" height="34"/>
+        <rect x="1110" y="48" width="42" height="72"/><rect x="1300" y="70" width="50" height="50"/>
+        <rect x="1366" y="88" width="34" height="32"/>
+        <!-- solar panel row -->
+        <g transform="translate(470,96)" fill="var(--solar)" opacity=".85"><rect x="0" y="0" width="16" height="11"/><rect x="20" y="0" width="16" height="11"/><rect x="40" y="0" width="16" height="11"/><rect x="60" y="0" width="16" height="11"/></g>
+      </g>
+      <!-- wind turbines -->
+      <g stroke="var(--ebbid-green-deep)" stroke-width="4" fill="var(--ebbid-green-deep)">
+        <line x1="560" y1="120" x2="560" y2="44"/>
+        <g style="transform-origin:560px 44px;transform-box:view-box;animation:ebbid-spin 9s linear infinite"><line x1="560" y1="44" x2="560" y2="12"/><line x1="560" y1="44" x2="588" y2="60"/><line x1="560" y1="44" x2="532" y2="60"/></g>
+        <line x1="870" y1="120" x2="870" y2="58"/>
+        <g style="transform-origin:870px 58px;transform-box:view-box;animation:ebbid-spin 12s linear infinite"><line x1="870" y1="58" x2="870" y2="32"/><line x1="870" y1="58" x2="893" y2="71"/><line x1="870" y1="58" x2="847" y2="71"/></g>
+      </g>
+    </svg>
+  </section>
+
+  <!-- ============ RECAP / ABOUT THE DAY ============ -->
+  <section id="recap" style="scroll-margin-top:88px;background:var(--paper);padding:96px 0 84px">
+    <div style="max-width:1180px;margin:0 auto;padding:0 28px">
+      <div data-reveal style="opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease);max-width:780px">
+        <div style="font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ebbid-green);margin-bottom:14px">About the day</div>
+        <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(30px,4vw,46px);line-height:1.06;letter-spacing:-.02em;margin:0;color:var(--ink)">One question, one district, one green economy.</h2>
+        <p style="margin:20px 0 0;font-size:18px;line-height:1.62;color:var(--muted)">The Summit convened elected officials, city agencies, clean-energy employers, workforce-training programs, and local business owners around one question: <span style="color:var(--ink);font-weight:600">how does East Brooklyn build an inclusive green economy?</span></p>
+      </div>
+
+      <!-- stat strip -->
+      <div data-reveal style="opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease) .08s,transform .8s var(--ease) .08s;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:48px">
+        <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+          <div style="background:var(--mist);border:1px solid var(--line);border-radius:18px;padding:26px 22px">
+            <div style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(32px,4vw,46px);line-height:1;color:var(--ebbid-green);letter-spacing:-.02em">{{ s.num }}</div>
+            <div style="margin-top:8px;font-size:14px;font-weight:600;color:var(--ink)">{{ s.label }}</div>
+          </div>
+        </sc-for>
+      </div>
+
+      <!-- detail cards -->
+      <div data-reveal style="opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease) .12s,transform .8s var(--ease) .12s;display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:20px">
+        <sc-for list="{{ cards }}" as="c" hint-placeholder-count="4">
+          <div style="background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:30px;transition:transform .18s var(--ease),box-shadow .18s var(--ease),border-color .18s var(--ease)" style-hover="transform:translateY(-3px);box-shadow:0 18px 40px rgba(13,67,38,.10);border-color:rgba(28,122,62,.3)">
+            <div style="width:46px;height:46px;border-radius:13px;background:{{ c.tile }};display:flex;align-items:center;justify-content:center;color:{{ c.stroke }}">{{ c.icon }}</div>
+            <div style="margin-top:18px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ebbid-green)">{{ c.kicker }}</div>
+            <h3 style="font-family:'Sora',sans-serif;font-weight:600;font-size:21px;margin:7px 0 0;letter-spacing:-.01em;color:var(--ink)">{{ c.title }}</h3>
+            <p style="margin:10px 0 0;font-size:15.5px;line-height:1.6;color:var(--muted)">{{ c.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+
+      <!-- green pathways callout -->
+      <div data-reveal style="opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease) .14s,transform .8s var(--ease) .14s;margin-top:20px;position:relative;overflow:hidden;border-radius:22px;background:linear-gradient(120deg,var(--ebbid-green-deep),var(--ebbid-green));padding:38px 40px">
+        <div aria-hidden="true" style="position:absolute;top:-60px;right:-40px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(198,239,60,.30),rgba(198,239,60,0) 70%)"></div>
+        <div style="position:relative;display:flex;align-items:center;gap:22px;flex-wrap:wrap">
+          <div style="flex:1;min-width:280px">
+            <div style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--solar)">Green Pathways · 47th Anniversary of the LDCENY</div>
+            <p style="margin:10px 0 0;font-size:19px;line-height:1.55;color:#eafce0;font-weight:500">Charting East Brooklyn's route to a green industrial future — and the jobs that come with it — through the <span style="color:#fff;font-weight:700">Green Pathways</span> initiative.</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:9px;padding:13px 20px;border-radius:999px;background:var(--solar);color:var(--ebbid-green-dark);font-weight:700;font-size:14px;white-space:nowrap">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 4 13C4 7 9 3 20 3c0 8-4 14-9 14"/><path d="M4 20s2-6 8-10"/></svg>
+            Building green jobs
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PHOTO CAROUSEL ============ -->
+  <section id="gallery" style="scroll-margin-top:88px;background:var(--mist);padding:90px 0 88px;position:relative;overflow:hidden">
+    <div style="max-width:1180px;margin:0 auto;padding:0 28px">
+      <div data-reveal style="opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease);display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:34px">
+        <div>
+          <div style="font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ebbid-green);margin-bottom:12px">Gallery</div>
+          <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:-.02em;margin:0;color:var(--ink)">Moments from the morning</h2>
+        </div>
+        <div style="font-family:'Sora',sans-serif;font-weight:600;font-size:15px;color:var(--muted);letter-spacing:.02em">{{ counter }}</div>
+      </div>
+
+      <!-- stage -->
+      <div data-reveal style="opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease) .06s,transform .8s var(--ease) .06s;position:relative">
+        <div onMouseEnter="{{ pauseOn }}" onMouseLeave="{{ pauseOff }}" onTouchStart="{{ onTouchStart }}" onTouchEnd="{{ onTouchEnd }}" style="position:relative;border-radius:24px;overflow:hidden;border:3px solid var(--ebbid-green);box-shadow:0 30px 60px rgba(13,67,38,.18);background:#0d4326;aspect-ratio:16/10">
+          <div style="{{ trackStyle }}">
+            <sc-for list="{{ photos }}" as="p" hint-placeholder-count="3">
+              <button onClick="{{ p.open }}" aria-label="Enlarge photo" style="flex:0 0 100%;width:100%;height:100%;border:0;padding:0;margin:0;background:#0d4326;cursor:zoom-in;display:block">
+                <img src="{{ p.src }}" alt="{{ p.alt }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
+              </button>
+            </sc-for>
+          </div>
+          <!-- caption -->
+          <div style="position:absolute;left:0;right:0;bottom:0;padding:42px 24px 18px;background:linear-gradient(0deg,rgba(7,45,25,.82),rgba(7,45,25,0));pointer-events:none">
+            <p style="margin:0;color:#fff;font-size:15px;font-weight:500;line-height:1.4;max-width:680px">{{ caption }}</p>
+          </div>
+          <!-- arrows -->
+          <button onClick="{{ prev }}" aria-label="Previous photo" style="position:absolute;top:50%;left:16px;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:var(--ebbid-green-deep);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.25);transition:background .15s var(--ease),transform .15s var(--ease)" style-hover="background:#fff;transform:translateY(-50%) scale(1.07)">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button onClick="{{ next }}" aria-label="Next photo" style="position:absolute;top:50%;right:16px;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:var(--ebbid-green-deep);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.25);transition:background .15s var(--ease),transform .15s var(--ease)" style-hover="background:#fff;transform:translateY(-50%) scale(1.07)">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+
+        <!-- dots -->
+        <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:22px">
+          <sc-for list="{{ photos }}" as="p" hint-placeholder-count="3">
+            <button onClick="{{ p.select }}" aria-label="Go to photo" style="{{ p.dotStyle }}"></button>
+          </sc-for>
+        </div>
+      </div>
+
+      <!-- thumbnail strip -->
+      <div data-reveal style="opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease) .1s,transform .8s var(--ease) .1s;display:grid;grid-template-columns:repeat(auto-fill,minmax(108px,1fr));gap:12px;margin-top:30px">
+        <sc-for list="{{ photos }}" as="p" hint-placeholder-count="6">
+          <button onClick="{{ p.select }}" aria-label="View photo" style="{{ p.thumbStyle }}">
+            <img src="{{ p.src }}" alt="{{ p.alt }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
+          </button>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VIDEO HIGHLIGHTS ============ -->
+  <section id="highlights" style="scroll-margin-top:88px;background:var(--paper);padding:96px 0 88px">
+    <div style="max-width:1180px;margin:0 auto;padding:0 28px">
+      <div data-reveal style="opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease);max-width:680px;margin-bottom:38px">
+        <div style="font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ebbid-green);margin-bottom:12px">Watch the highlights</div>
+        <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:-.02em;margin:0;color:var(--ink)">See the day in motion</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px">
+        <sc-for list="{{ videos }}" as="v" hint-placeholder-count="3">
+          <div data-reveal style="opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease)">
+            <div style="position:relative;aspect-ratio:16/9;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#0d4326;box-shadow:0 14px 34px rgba(13,67,38,.12)">
+              <sc-if value="{{ v.loaded }}" hint-placeholder-val="{{ false }}">
+                <iframe src="{{ v.embed }}" title="{{ v.title }}" allow="accelerated-encoder;autoplay;encrypted-media;picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>
+              </sc-if>
+              <sc-if value="{{ v.notLoaded }}" hint-placeholder-val="{{ true }}">
+                <button onClick="{{ v.load }}" aria-label="Play highlight video" style="position:absolute;inset:0;width:100%;height:100%;border:0;padding:0;cursor:pointer;background:#0d4326">
+                  <img src="{{ v.thumb }}" alt="Video thumbnail — {{ v.title }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;opacity:.78">
+                  <span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+                    <span style="width:62px;height:62px;border-radius:50%;background:var(--solar);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(0,0,0,.35);transition:transform .15s var(--ease)" style-hover="transform:scale(1.08)">
+                      <svg viewBox="0 0 24 24" width="26" height="26" fill="var(--ebbid-green-dark)" style="margin-left:3px"><path d="M8 5v14l11-7z"/></svg>
+                    </span>
+                  </span>
+                </button>
+              </sc-if>
+            </div>
+            <div style="margin-top:13px;font-size:14px;font-weight:600;color:var(--ink)">{{ v.title }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SPEAKERS & PANELISTS ============ -->
+  <section style="background:var(--mist);padding:96px 0 90px">
+    <div style="max-width:1180px;margin:0 auto;padding:0 28px">
+      <div data-reveal style="opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease);max-width:680px;margin-bottom:40px">
+        <div style="font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ebbid-green);margin-bottom:12px">Voices of the day</div>
+        <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:-.02em;margin:0;color:var(--ink)">Speakers &amp; panelists</h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:40px">
+        <sc-for list="{{ groups }}" as="g" hint-placeholder-count="4">
+          <div data-reveal style="opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease)">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+              <span style="width:10px;height:10px;border-radius:50%;background:{{ g.dot }}"></span>
+              <h3 style="font-family:'Sora',sans-serif;font-weight:600;font-size:18px;margin:0;letter-spacing:-.01em;color:var(--ink)">{{ g.label }}</h3>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px">
+              <sc-for list="{{ g.members }}" as="m" hint-placeholder-count="3">
+                <div style="display:flex;align-items:center;gap:14px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px 18px;transition:transform .16s var(--ease),box-shadow .16s var(--ease)" style-hover="transform:translateY(-2px);box-shadow:0 12px 28px rgba(13,67,38,.10)">
+                  <div style="flex-shrink:0;width:48px;height:48px;border-radius:50%;background:{{ m.tile }};color:{{ m.stroke }};display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:700;font-size:16px">{{ m.initials }}</div>
+                  <div style="min-width:0">
+                    <div style="font-size:15px;font-weight:700;color:var(--ink);line-height:1.2">{{ m.name }}</div>
+                    <div style="font-size:13px;color:var(--muted);line-height:1.35;margin-top:3px">{{ m.org }}</div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SPONSORS ============ -->
+  <section id="sponsors" style="scroll-margin-top:88px;position:relative;overflow:hidden;background:linear-gradient(160deg,var(--ebbid-green-deep),var(--ebbid-green-dark));padding:90px 0 86px">
+    <div aria-hidden="true" style="position:absolute;top:-80px;right:-60px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(198,239,60,.18),rgba(198,239,60,0) 70%)"></div>
+    <div style="position:relative;max-width:1180px;margin:0 auto;padding:0 28px">
+      <div data-reveal style="opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease);text-align:center;max-width:720px;margin:0 auto 44px">
+        <div style="font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--solar);margin-bottom:12px">Made possible by</div>
+        <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(30px,4vw,44px);line-height:1.06;letter-spacing:-.02em;margin:0;color:#fff">Thanks to our sponsors &amp; partners</h2>
+        <p style="margin:18px auto 0;font-size:16px;line-height:1.6;color:#cfe6c4;max-width:620px">The 4th Annual Economic Development Summit was made possible by a grant from <span style="color:#fff;font-weight:600">NYC Small Business Services</span> and <span style="color:#fff;font-weight:600">Con Edison</span> — with thanks to our partners Matchup Labs, At the Top Productions, and caterer Brooklyn Blend.</p>
+      </div>
+      <div data-reveal style="opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease) .06s,transform .8s var(--ease) .06s;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;max-width:980px;margin:0 auto">
+        <sc-for list="{{ sponsors }}" as="sp" hint-placeholder-count="6">
+          <div style="background:#fff;border-radius:16px;height:118px;display:flex;align-items:center;justify-content:center;padding:24px;transition:transform .18s var(--ease),box-shadow .18s var(--ease)" style-hover="transform:translateY(-3px);box-shadow:0 16px 36px rgba(0,0,0,.28)">
+            <img src="{{ sp.src }}" alt="{{ sp.alt }}" style="max-width:100%;max-height:64px;object-fit:contain;filter:grayscale(1);opacity:.72;transition:filter .2s var(--ease),opacity .2s var(--ease)" style-hover="filter:grayscale(0);opacity:1">
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer style="background:var(--ink);color:#cdd6cf;padding:60px 0 40px">
+    <div style="max-width:1180px;margin:0 auto;padding:0 28px">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:40px;flex-wrap:wrap;padding-bottom:34px;border-bottom:1px solid rgba(255,255,255,.12)">
+        <div style="max-width:520px">
+          <img src="ebbid-logo.svg" alt="East Brooklyn Business Improvement District logo" style="height:36px;width:auto;display:block;filter:brightness(0) invert(1)">
+          <p style="margin:18px 0 0;font-size:15px;line-height:1.6;color:#9fb0a4">The EBBID is a 40-block area in East New York, Brooklyn, incorporated in 1983 — serving businesses, property owners, and residents.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px;align-items:flex-start">
+          <a href="https://www.eastbrooklynbid.com" target="_blank" rel="noopener" style="font-size:15px;font-weight:600;color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:color .15s var(--ease)" style-hover="color:var(--solar)">www.eastbrooklynbid.com
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+          <a href="https://www.eastbrooklynbid.com" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:999px;background:var(--solar);color:var(--ebbid-green-dark);font-weight:700;font-size:14px;text-decoration:none;transition:transform .15s var(--ease)" style-hover="transform:translateY(-2px)">Join our mailing list
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:26px">
+        <div style="font-size:13px;color:#7d8e82">© 2026 East Brooklyn Business Improvement District. &nbsp;·&nbsp; The EBBID Goes Green.</div>
+        <div style="display:flex;align-items:center;gap:9px;font-size:12px;color:#7d8e82">
+          <span>Site by</span>
+          <img src="matchup-white.png" alt="Matchup Labs" style="height:18px;width:auto;opacity:.75">
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ LIGHTBOX ============ -->
+  <div role="dialog" aria-modal="true" aria-label="Photo viewer" style="{{ lbWrapStyle }}">
+    <div onClick="{{ closeLb }}" style="position:absolute;inset:0;background:rgba(7,45,25,.88);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)"></div>
+    <button onClick="{{ closeLb }}" aria-label="Close" style="position:absolute;top:22px;right:22px;z-index:3;width:46px;height:46px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s var(--ease)" style-hover="background:rgba(255,255,255,.26)">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <button onClick="{{ lbPrev }}" aria-label="Previous" style="position:absolute;left:22px;top:50%;transform:translateY(-50%);z-index:3;width:50px;height:50px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s var(--ease)" style-hover="background:rgba(255,255,255,.26)">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <button onClick="{{ lbNext }}" aria-label="Next" style="position:absolute;right:22px;top:50%;transform:translateY(-50%);z-index:3;width:50px;height:50px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s var(--ease)" style-hover="background:rgba(255,255,255,.26)">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+    <figure style="position:relative;z-index:2;margin:0;max-width:92vw;max-height:88vh;display:flex;flex-direction:column;align-items:center;gap:14px">
+      <img src="{{ lbSrc }}" alt="{{ lbAlt }}" style="max-width:92vw;max-height:78vh;object-fit:contain;border-radius:14px;border:3px solid var(--solar);box-shadow:0 30px 70px rgba(0,0,0,.5)">
+      <figcaption style="color:#eafce0;font-size:14.5px;font-weight:500;text-align:center;max-width:760px">{{ lbCap }}</figcaption>
+    </figure>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { idx: 0, paused: false, lb: -1, scrolled: false, loaded: {} };
+
+  // ---- DATA ---------------------------------------------------------------
+  // Swap the filenames in  to change the gallery.
+  get photoData() {
+    return [
+      { f: 'IMG_7556.jpg', cap: 'Partners and panelists gather at the Summit step-and-repeat.' },
+      { f: 'IMG_7625.jpg', cap: 'Conversations on building an inclusive green economy.' },
+      { f: 'IMG_7584.jpg', cap: 'Green Economy Partners — what employers are looking for.' },
+      { f: 'IMG_7635.jpg', cap: 'Training & certification — pathways to green jobs.' },
+      { f: 'IMG_7608.jpg', cap: 'Connecting employers, trainers, and local business owners.' },
+      { f: 'IMG_7637.jpg', cap: 'Hosts and organizers welcoming the East Brooklyn community.' },
+      { f: 'IMG_7606.jpg', cap: 'A morning dedicated to renewable energy and the green economy.' },
+      { f: 'IMG_7605.jpg', cap: 'Celebrating the Green Pathways initiative.' },
+      { f: 'IMG_7610.jpg', cap: 'Voices from the 40-block East New York district.' },
+      { f: 'IMG_7638.jpg', cap: 'Community-centered, Brooklyn-built collaboration.' },
+      { f: 'IMG_7628.jpg', cap: 'Moderators and panelists between sessions.' },
+      { f: 'IMG_7575.jpg', cap: 'Toward a green industrial future for East Brooklyn.' },
+      { f: 'IMG_7561.jpg', cap: 'The EBBID goes green.' },
+    ];
+  }
+
+  get videoData() {
+    return [
+      { id: '-3lYl469Cks', title: 'Summit highlights — Reel 01' },
+      { id: 'Y0dTphfuwtk', title: 'Summit highlights — Reel 02' },
+      { id: 'XOneacegrx8', title: 'Summit highlights — Reel 03' },
+    ];
+  }
+
+  // ---- LIFECYCLE ----------------------------------------------------------
+  componentDidMount() {
+    this.reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!this.reduced) {
+      this.timer = setInterval(() => { if (!this.state.paused && this.state.lb < 0) this.next(); }, 5200);
+    }
+    this._key = (e) => {
+      if (this.state.lb >= 0) {
+        if (e.key === 'Escape') this.closeLb();
+        else if (e.key === 'ArrowRight') this.lbNext();
+        else if (e.key === 'ArrowLeft') this.lbPrev();
+      }
+    };
+    window.addEventListener('keydown', this._key);
+    this._scroll = () => {
+      const s = window.scrollY > 18;
+      if (s !== this.state.scrolled) this.setState({ scrolled: s });
+    };
+    window.addEventListener('scroll', this._scroll, { passive: true });
+
+    // scroll reveal — opacity:0 is set in the template, JS overrides survive re-renders
+    const els = document.querySelectorAll('[data-reveal]');
+    if (this.reduced) {
+      els.forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; });
+    } else {
+      const io = new IntersectionObserver((ents) => {
+        ents.forEach(en => {
+          if (en.isIntersecting) {
+            en.target.style.opacity = '1';
+            en.target.style.transform = 'none';
+            io.unobserve(en.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      els.forEach(el => io.observe(el));
+    }
+  }
+  componentWillUnmount() {
+    clearInterval(this.timer);
+    window.removeEventListener('keydown', this._key);
+    window.removeEventListener('scroll', this._scroll);
+  }
+
+  // ---- CAROUSEL -----------------------------------------------------------
+  get total() { return this.photoData.length; }
+  goTo = (i) => this.setState({ idx: (i + this.total) % this.total });
+  next = () => this.goTo(this.state.idx + 1);
+  prev = () => this.goTo(this.state.idx - 1);
+  onTouchStart = (e) => { this._tx = e.touches[0].clientX; };
+  onTouchEnd = (e) => {
+    if (this._tx == null) return;
+    const dx = e.changedTouches[0].clientX - this._tx;
+    if (Math.abs(dx) > 44) { dx < 0 ? this.next() : this.prev(); }
+    this._tx = null;
+  };
+
+  // ---- LIGHTBOX -----------------------------------------------------------
+  openLb = (i) => this.setState({ lb: i });
+  closeLb = () => this.setState({ lb: -1 });
+  lbNext = () => this.setState(s => ({ lb: (s.lb + 1) % this.total }));
+  lbPrev = () => this.setState(s => ({ lb: (s.lb - 1 + this.total) % this.total }));
+
+  // ---- VIDEO --------------------------------------------------------------
+  loadVid = (id) => this.setState(s => ({ loaded: { ...s.loaded, [id]: true } }));
+
+  // ---- HELPERS ------------------------------------------------------------
+  initials(name) {
+    return name.trim().split(/\s+/).slice(0, 2).map(w => w[0]).join('').toUpperCase();
+  }
+  pad(n) { return String(n).padStart(2, '0'); }
+
+  renderVals() {
+    const { idx, lb } = this.state;
+    const root = '';
+    const photos = this.photoData.map((p, i) => {
+      const active = i === idx;
+      return {
+        src: root + p.f,
+        alt: 'Photo ' + (i + 1) + ' from the EBBID 4th Annual Economic Development Summit',
+        select: () => this.goTo(i),
+        open: () => this.openLb(i),
+        dotStyle: {
+          height: '8px', width: active ? '28px' : '8px', borderRadius: '999px', border: '0',
+          padding: 0, cursor: 'pointer', transition: 'all .3s var(--ease)',
+          background: active ? 'var(--ebbid-green)' : 'rgba(14,28,19,.22)',
+        },
+        thumbStyle: {
+          border: active ? '2.5px solid var(--ebbid-green)' : '2.5px solid transparent',
+          padding: 0, margin: 0, borderRadius: '12px', overflow: 'hidden', cursor: 'pointer',
+          aspectRatio: '4/3', background: '#0d4326', transition: 'border-color .2s var(--ease),transform .15s var(--ease)',
+          opacity: active ? '1' : '.82', transform: active ? 'scale(1)' : 'scale(.985)',
+        },
+      };
+    });
+
+    // sponsors — add or remove entries freely; the grid auto-fits.
+    const sponsors = [
+      { src: 'nyc-sbs.jpeg', alt: 'NYC Small Business Services' },
+      { src: 'coned.png', alt: 'Con Edison' },
+      { src: 'nyc-edc.png', alt: 'NYC Economic Development Corporation' },
+      { src: 'ldc-eny.png', alt: 'Local Development Corporation of East New York' },
+      { src: 'ebbid.png', alt: 'East Brooklyn Business Improvement District' },
+      { src: 'matchup-black.png', alt: 'Matchup Labs' },
+    ];
+
+    const videos = this.videoData.map(v => {
+      const on = !!this.state.loaded[v.id];
+      return {
+        title: v.title,
+        thumb: 'https://i.ytimg.com/vi/' + v.id + '/hqdefault.jpg',
+        embed: 'https://www.youtube.com/embed/' + v.id + '?autoplay=1&rel=0',
+        loaded: on, notLoaded: !on,
+        load: () => this.loadVid(v.id),
+      };
+    });
+
+    // detail cards — icons are React elements so they render through the template hole
+    const h = React.createElement;
+    const ic = (children) => h('svg', { viewBox: '0 0 24 24', width: 22, height: 22, fill: 'none', stroke: 'currentColor', strokeWidth: 1.8, strokeLinecap: 'round', strokeLinejoin: 'round' }, children);
+    const cards = [
+      { kicker: 'Keynote', title: 'Lindsay Greene', tile: 'rgba(198,239,60,.22)', stroke: 'var(--solar-deep)',
+        icon: ic([h('rect', { key: 1, x: 9, y: 2, width: 6, height: 11, rx: 3 }), h('path', { key: 2, d: 'M5 10a7 7 0 0 0 14 0M12 17v4M8 21h8' })]),
+        body: 'President & CEO of the Brooklyn Navy Yard Development Corporation, on bridging cutting-edge green tech with local workforce development.' },
+      { kicker: 'Featured remarks', title: 'City & utility voices', tile: 'rgba(47,159,216,.16)', stroke: 'var(--sky)',
+        icon: ic([h('path', { key: 1, d: 'M3 11l18-5v12L3 14v-3zM11.6 16.8a3 3 0 0 1-5.8-1.6' })]),
+        body: 'Calvin Brown, Deputy Commissioner at NYC Small Business Services, and Dani Gonzalez of Con Edison\u2019s Small Business & Nonprofit Energy Efficiency Programs.' },
+      { kicker: 'Two panels', title: 'Employers & trainers', tile: 'rgba(28,122,62,.14)', stroke: 'var(--ebbid-green)',
+        icon: ic([h('circle', { key: 1, cx: 9, cy: 8, r: 3 }), h('circle', { key: 2, cx: 17, cy: 9, r: 2.4 }), h('path', { key: 3, d: 'M3 19a6 6 0 0 1 12 0M14.5 19a5 5 0 0 1 6.5-4.8' })]),
+        body: 'Moderated by Camille Newman — Green Economy Partners (Employers) and Training & Certification Programs.' },
+      { kicker: 'Hosted by', title: 'EBBID & LoriLu', tile: 'rgba(198,239,60,.22)', stroke: 'var(--solar-deep)',
+        icon: ic([h('path', { key: 1, d: 'M12 21s-7-4.3-9.2-8.4C1 9 3 5.5 6.5 5.5c2 0 3.5 1.4 5.5 3.5 2-2.1 3.5-3.5 5.5-3.5C21 5.5 23 9 21.2 12.6 19 16.7 12 21 12 21z' })]),
+        body: 'Lori Luis of LoriLu Consulting and Bill Wilkins, EBBID Executive Director, welcomed the district\u2019s business community.' },
+    ];
+
+    const stats = [
+      { num: '1', label: 'Keynote speaker' },
+      { num: '7', label: 'Panelists' },
+      { num: '18', label: 'Partner tables' },
+      { num: '40', label: 'Block district' },
+    ];
+
+    // speakers — grouped
+    const mk = (name, org, tile, stroke) => ({ name, org, initials: this.initials(name), tile, stroke });
+    const groups = [
+      { label: 'Keynote', dot: 'var(--solar-deep)', members: [
+        mk('Lindsay Greene', 'Brooklyn Navy Yard', 'rgba(198,239,60,.25)', 'var(--solar-deep)'),
+      ]},
+      { label: 'Panel 1 — Green Economy Partners (Employers)', dot: 'var(--ebbid-green)', members: [
+        mk('Dina Rabiner', 'Brooklyn Chamber of Commerce', 'rgba(28,122,62,.14)', 'var(--ebbid-green)'),
+        mk('Sam Brill', 'NineDot Energy — community battery storage', 'rgba(28,122,62,.14)', 'var(--ebbid-green)'),
+        mk('Kevin Rivera', 'Park Avenue Building & Roofing Supplies', 'rgba(28,122,62,.14)', 'var(--ebbid-green)'),
+      ]},
+      { label: 'Panel 2 — Training & Certification', dot: 'var(--sky)', members: [
+        mk('Evelyn Ortiz', 'Opportunities for a Better Tomorrow', 'rgba(47,159,216,.16)', 'var(--sky)'),
+        mk('Morissa Morris', 'Kinetic Communities Consulting', 'rgba(47,159,216,.16)', 'var(--sky)'),
+        mk('Tatanisia Lumley', 'Building Skills NY', 'rgba(47,159,216,.16)', 'var(--sky)'),
+        mk('Antuan Cannon', 'Willdan Energy Solutions', 'rgba(47,159,216,.16)', 'var(--sky)'),
+      ]},
+      { label: 'Agency & host voices', dot: 'var(--ebbid-green-deep)', members: [
+        mk('Calvin Brown', 'NYC Small Business Services', 'rgba(13,67,38,.12)', 'var(--ebbid-green-deep)'),
+        mk('Dani Gonzalez', 'Con Edison', 'rgba(13,67,38,.12)', 'var(--ebbid-green-deep)'),
+        mk('Bill Wilkins', 'EBBID Executive Director', 'rgba(13,67,38,.12)', 'var(--ebbid-green-deep)'),
+        mk('Lori Luis', 'LoriLu Consulting', 'rgba(13,67,38,.12)', 'var(--ebbid-green-deep)'),
+        mk('Camille Newman', 'Moderator', 'rgba(13,67,38,.12)', 'var(--ebbid-green-deep)'),
+      ]},
+    ];
+
+    const cur = this.photoData[idx];
+    const lbP = lb >= 0 ? this.photoData[lb] : null;
+
+    return {
+      photos, sponsors, videos, cards, stats, groups,
+      trackStyle: { display: 'flex', height: '100%', transition: 'transform .6s var(--ease)', transform: 'translateX(-' + (idx * 100) + '%)' },
+      caption: cur ? cur.cap : '',
+      counter: this.pad(idx + 1) + ' / ' + this.pad(this.total),
+      next: this.next, prev: this.prev, goTo: this.goTo,
+      pauseOn: () => this.setState({ paused: true }),
+      pauseOff: () => this.setState({ paused: false }),
+      onTouchStart: this.onTouchStart, onTouchEnd: this.onTouchEnd,
+      closeLb: this.closeLb, lbNext: this.lbNext, lbPrev: this.lbPrev,
+      lbSrc: lbP ? root + lbP.f : '',
+      lbAlt: lbP ? 'Enlarged photo ' + (lb + 1) + ' from the EBBID Economic Development Summit' : '',
+      lbCap: lbP ? lbP.cap : '',
+      lbWrapStyle: { position: 'fixed', inset: 0, zIndex: 90, display: lb >= 0 ? 'flex' : 'none', alignItems: 'center', justifyContent: 'center' },
+      headerStyle: {
+        position: 'sticky', top: 0, zIndex: 50,
+        background: this.state.scrolled ? 'rgba(255,255,255,.82)' : 'rgba(255,255,255,.6)',
+        backdropFilter: 'blur(14px)', WebkitBackdropFilter: 'blur(14px)',
+        borderBottom: this.state.scrolled ? '1px solid var(--line)' : '1px solid transparent',
+        boxShadow: this.state.scrolled ? '0 6px 24px rgba(13,67,38,.07)' : 'none',
+        transition: 'background .25s var(--ease),box-shadow .25s var(--ease),border-color .25s var(--ease)',
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>
